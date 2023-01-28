@@ -1,0 +1,238 @@
+{%extends 'main/base.html'%}
+{%load static%}
+{%block head_css_site%}
+<link rel="stylesheet" href="{%static 'css/admin.css'%}">
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+
+{%endblock head_css_site%}
+
+{%block ifsuperuser%}
+<a class="nav-link" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample"
+    href="#"><i class="bi bi-person-fill-lock" id="admin-logo"></i></a>
+{%endblock ifsuperuser%}
+
+{%block content%}
+<div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
+    <div class="offcanvas-header">
+        <h5 class="offcanvas-title" id="offcanvasExampleLabel">Admin DashBoard</h5>
+        <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body" id="side-menu">
+        <div class="dropdown mt-3">
+            <button class="btn btn-light " type="button" id="dropdownMenuButton" data-bs-toggle="dropdown">
+                Revenue
+            </button>
+
+        </div>
+        <div class="dropdown mt-3">
+            <button class="btn btn-light " type="button" id="dropdownMenuButton" data-bs-toggle="dropdown">
+                Insights
+            </button>
+
+        </div>
+        <div class="dropdown mt-3">
+            <button class="btn btn-light " type="button" id="dropdownMenuButton" data-bs-toggle="dropdown">
+                Requests
+            </button>
+
+        </div>
+        <div class="dropdown mt-3">
+            <button class="btn btn-light " type="button" id="dropdownMenuButton" data-bs-toggle="dropdown">
+                Orders
+            </button>
+
+        </div>
+        <div class="dropdown mt-3">
+            <button class="btn btn-light " type="button" id="dropdownMenuButton" data-bs-toggle="dropdown">
+                Reports
+            </button>
+
+        </div>
+        <div class="dropdown mt-3">
+            <button class="btn btn-light " type="button" id="dropdownMenuButton" data-bs-toggle="dropdown">
+                Profile
+            </button>
+        </div>
+    </div>
+</div>
+<section class="cardbody">
+    <div class="row" id="cardbox">
+        <div class="col">
+            <div class="card">
+                <div>
+                    <div class="numbers">
+                        2149
+                    </div>
+                    <div class="cardname">
+                        Revenue
+                    </div>
+                </div>
+                <div class="iconbox">
+                    <i class="bi bi-currency-dollar"></i>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="card">
+                <div>
+                    <div class="numbers">
+                        3295
+                    </div>
+                    <div class="cardname">
+                        Sales
+                    </div>
+                </div>
+                <div class="iconbox">
+                    <i class="bi bi-currency-dollar"></i>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="card">
+                <div>
+                    <div class="numbers">
+                        67.5
+                    </div>
+                    <div class="cardname">
+                        Avg Sales
+                    </div>
+                </div>
+                <div class="iconbox">
+                    <i class="bi bi-currency-dollar"></i>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="card">
+                <div>
+                    <div class="numbers">
+                        2149
+                    </div>
+                    <div class="cardname">
+                        Revenue
+                    </div>
+                </div>
+                <div class="iconbox">
+                    <i class="bi bi-currency-dollar"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+</section>
+<section class="charts">
+    <!-- <form>
+    <label for="cars">Choose a car:</label>
+    <select id="cars" name="cars" size="4" multiple>
+    <option value="volvo">Volvo</option>
+    <option value="saab">Saab</option>
+    <option value="fiat">Fiat</option>
+    <option value="audi">Audi</option>
+</form> -->
+</select>
+    <div class="row">
+        <div class="col">
+            <canvas id="Current"></canvas>
+        </div>
+        <div class="col">
+            <canvas id="Incoming"></canvas>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <canvas id="Outgoing"></canvas>
+        </div>
+        <div class="col">
+            <canvas id="Predicted"></canvas>
+        </div>
+    </div>
+</section>
+
+<script >
+const current = document.getElementById('Current');
+const outgoing = document.getElementById('Outgoing');
+const incoming = document.getElementById('Incoming');
+const predicted = document.getElementById('Predicted');
+
+
+new Chart(current, {
+    type: 'bar',
+    data: {
+        labels: [{% for stock in stocks %}'{{ stock.s_name }},{{stock.date}}', {% endfor %}],
+        datasets: [{
+            label: 'Quantity',
+            data: [{% for stock in stocks %} {{ stock.quantity }}, {% endfor %}],
+            borderWidth: 1
+        }]
+    },
+    options: {
+        scales: {
+        y: {
+            beginAtZero: true
+        }
+    }
+    }
+});
+
+new Chart(incoming, {
+    type: 'bar',
+    data: {
+        labels: [{% for stock in stocks %}'{{ stock.s_name }},{{stock.date}}', {% endfor %}],
+        datasets: [{
+            label: 'Quantity',
+            data: [{% for stock in stocks %} {{ stock.s_in }}, {% endfor %}],
+            borderWidth: 1
+        }]
+    },
+    options: {
+        scales: {
+        y: {
+            beginAtZero: true
+        }
+    }
+    }
+});
+
+new Chart(outgoing, {
+    type: 'bar',
+    data: {
+        labels: [{% for stock in stocks %}'{{ stock.s_name }},{{stock.date}}', {% endfor %}],
+        datasets: [{
+            label: 'Quantity',
+            data: [{% for stock in stocks %} {{ stock.s_out }}, {% endfor %}],
+            borderWidth: 1
+        }]
+    },
+    options: {
+        scales: {
+        y: {
+            beginAtZero: true
+        }
+    }
+    }
+});
+
+new Chart(predicted, {
+    type: 'bar',
+    data: {
+        labels: [{% for stock in stocks %}'{{ stock.s_name }},{{stock.date}}', {% endfor %}],
+        datasets: [{
+            label: 'Quantity',
+            data: [{% for stock in stocks %} {{ stock.quantity }}, {% endfor %}],
+            borderWidth: 1
+        }]
+    },
+    options: {
+        scales: {
+        y: {
+            beginAtZero: true
+        }
+    }
+    }
+});
+</script>
+
+
+
+{%endblock content%}

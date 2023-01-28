@@ -23,4 +23,8 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('',app_views.home,name='home'),
     path('login/',app_views.login,name='login'),
+    path('map/',app_views.stock_chart_view,name='map'),
+    path('db/',app_views.dbtest,name='db'),
+    path('createuser/',app_views.createuser,name='createuser'),
+    path('admins/',app_views.admin,name='admindb'),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

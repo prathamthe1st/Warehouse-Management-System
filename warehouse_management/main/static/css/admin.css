@@ -1,0 +1,81 @@
+@media(max-width:800px){
+    #chart-image{
+        width:500px;
+        height:300px;
+        padding-right:100px;
+    }
+    #cardbox .card{
+        margin-bottom:10px;
+    }
+
+}
+#offcanvasExample{
+    background: #232423;
+}
+#offcanvasExampleLabel{
+color:#fff;
+}
+#side-menu{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top:119px;  
+   
+    
+}
+
+#cardbox{
+    position:relative;
+    width:100%;
+    padding:20px;
+}
+
+#cardbox .card{
+    position:relative;
+    padding:30px;
+    border-radius:20px;
+}
+.charts .col{
+    margin: 20px 0 20px 50px;
+}
+#cardbox .card .numbers{
+    position:relative;
+    font-weight:500;
+    font-size:2.5rem;
+    color:blue;
+}
+#cardbox .card .cardname{
+    color:gray;
+    font-size:1.1rem;
+    margin-top:5px;
+}
+#cardbox .card .iconbox{
+    font-size:3.5rem;
+    color:gray;
+    margin-left:30px;
+}
+.card{
+    display:flex;
+    flex-direction:row;
+    justify-content:space-between;
+    align-items:center;
+}
+#dropdownMenuButton{
+    margin-bottom: 20px;
+
+    }
+    #dropdownMenuButton:after{
+    content:'';
+    position:absolute;
+    background-color:#fff;
+    height:0px;
+    width: 0%;
+    left: 0;
+    bottom: -10px;
+    padding: 0 10px;
+    transition: 0.3s;
+    }
+    #dropdownMenuButton:hover::after{
+    height: 2px;
+    width:100%;
+    }

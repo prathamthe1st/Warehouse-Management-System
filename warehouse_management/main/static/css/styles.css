@@ -4,7 +4,7 @@ body
 {
     background-image : radial-gradient(rgb(144, 195, 252),rgba(144, 195, 252,0));
 }
-#navigation-bar
+.navigation-bar
 {
     background : radial-gradient(rgb(144, 195, 252),rgba(144, 195, 252,0));
     border : none;
@@ -14,17 +14,14 @@ body
     font-family : 'Sofia';
     margin-left: 3%;
 }
-#logo:hover
-{
-    font-family : 'Sofia';
-    margin-left: 3%;
-}
-
 #navbar-link
 {
     font-family : 'Sofia';
     padding-right: 40px; 
     padding-left: 30px; 
+}
+#admin-logo {
+    margin-left: 2rem;
 }
 
 #navbar-link:hover
@@ -45,9 +42,6 @@ body
     'GRAD' 0,
     'opsz' 48
 }
-</style>
-
-/* All Text CSS on Home Page */
 
 #heading-text
 {
@@ -110,11 +104,17 @@ body
     font-size: 22px;
 }
 
-@media (max-width:503px)
+@media (max-width:700px)
 {
     #social-media-image
     {
         width: 10%;
+    }
+    .nav-item{  
+        width:50%;
+    }
+    #social-media-dropdown{
+        width:40%;
     }
 }
 @include media-breakpoint-up(sm) 
@@ -142,53 +142,4 @@ body
     to {
         background-position:20vw;
     }
-    glitch {
-        0% {
-            clip-path: var(--slice-1);
-            transform: translate(-20px, -10px);
-        }
-        10% {
-            clip-path: var(--slice-3);
-            transform: translate(10px, 10px);
-        }
-        20% {
-            clip-path: var(--slice-1);
-            transform: translate(-10px, 10px);
-        }
-        30% {
-            clip-path: var(--slice-3);
-            transform: translate(0px, 5px);
-        }
-        40% {
-            clip-path: var(--slice-2);
-            transform: translate(-5px, 0px);
-        }
-        50% 
-        {
-            clip-path: var(--slice-3);
-            transform: translate(5px, 0px);
-        }
-        60% 
-        {
-            clip-path: var(--slice-4);
-            transform: translate(5px, 10px);
-        }
-        70%
-        {
-            clip-path: var(--slice-2);
-            transform: translate(-10px, 10px);
-        }
-        80% 
-        {
-            clip-path: var(--slice-5);
-            transform: translate(20px, -10px);
-        }
-        90% {
-            clip-path: var(--slice-1);
-            transform: translate(-10px, 0px);
-        }
-        100% {
-            clip-path: var(--slice-1);
-            transform: translate(0);
-        }
 }

@@ -1,0 +1,168 @@
+.create-user{
+    display: flex;
+    align-self: center;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    background: #23242a;
+    
+    }
+    .box-create{
+    position: relative;
+    width: 780px;
+    height: 720px;
+    border-radius:30px;
+    overflow: hidden;
+    
+    }
+    .box-create::before{
+        content: '';
+        z-index: 1;
+        position: absolute;
+        top: -50%;
+        left: -50%;
+        width: 980px;
+        height: 720px;
+        transform-origin: bottom right;
+        background: linear-gradient(0deg,transparent,#45f3ff,#45f3ff);
+        animation: animate 6s linear infinite
+    }
+    .box-create::after{
+      content: '';
+        z-index: 1;
+        position: absolute;
+        top: -50%;
+        left: -50%;
+        width: 980px;
+        height: 720px;
+        transform-origin: bottom right;
+        background: linear-gradient(0deg,transparent,#45f3ff,#45f3ff);
+        animation: animate 6s linear infinite;
+        animation-delay: -3s;
+    }
+    
+    .form-create{
+    position: absolute;
+    inset: 2px;
+    background:#1c1c1c;
+    z-index: 10;
+    }
+    .create-form{
+    
+    display: flex;
+    margin-top:100px ;
+    flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      }
+   #create-label,#create-input{
+    display: block;
+    margin-bottom: 10px;
+    }
+    
+    #create-label{
+      font-weight: bold;
+      color: azure;
+    }
+    
+    #form-div{
+    display: flex;
+    }
+    .name-div{
+    display: flex;
+    }
+    .id-div{
+        display: flex;
+        }
+    .pass-div{
+    display: flex;
+    }
+    
+    #create-input{
+      width: 80%;
+      padding: 8px;
+      font-size: 16px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+      #create-submit{
+      background-color: #4CAF50;
+      color: white;
+      padding: 12px 20px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      margin-top: 10px;
+      }
+      #create-submit:hover{
+        background-color: #025f07;
+      }
+    
+   
+      @media(max-width: 767px){
+        .box-create{
+            position: relative;
+            width: 360px;
+            height: 900px;
+            margin-bottom: 30px;
+            margin-top: 20px;
+            border-radius: 25px;
+            overflow: hidden;
+            }
+            .box-create::before{
+                content: '';
+                z-index: 1;
+                position: absolute;
+                top: -50%;
+                left: -50%;
+                width: 360px;
+                height: 900px;  
+                transform-origin: bottom right;
+                background: linear-gradient(0deg,transparent,#45f3ff,#45f3ff);
+                animation: animate 6s linear infinite
+            }
+            .box-create::after{
+              content: '';
+                z-index: 1;
+                position: absolute;
+                top: -50%;
+                left: -50%;
+                width: 360px;
+                height: 900px;
+                transform-origin: bottom right;
+                background: linear-gradient(0deg,transparent,#45f3ff,#45f3ff);
+                animation: animate 6s linear infinite;
+                animation-delay: -3s;
+            }
+            .create-form{
+            margin-top: 5px;
+            margin-left: 30px;
+            }
+        #form-div{
+        
+            display: flex;
+            flex-direction: row;
+        }
+        .name-div{
+            display: flex;
+            flex-direction: column;
+            }
+            .id-div{
+                display: flex;
+                flex-direction: column;
+                }
+            .pass-div{
+            display: flex;
+            flex-direction: column;
+            }
+        #create-submit{
+        margin-left: -37px;
+        }
+        }
+    @keyframes animate{
+    0%{
+    transform: rotate(0deg);
+    }
+    100%{
+    transform: rotate(360deg);}
+    }
