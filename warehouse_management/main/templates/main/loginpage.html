@@ -1,0 +1,23 @@
+{%extends 'main/base.html'%} 
+{%load static%} 
+{%block content%}
+{%block head_css_site%}
+<link rel='stylesheet' href='{%static 'css/login.css'%}'/>
+{%endblock head_css_site%}
+<!--login form-->
+<div class="login">
+    <div class="box-login">
+        <div class="form-login">
+            <form class="login-form" method='post'>{% csrf_token %}
+                <label for="username" id="login-label">Username:</label>
+                <input type="text" id="login-input" name="username" />
+                <br />
+                <label for="password" id="login-label">Password:</label>
+                <input type="password" id="login-input" name="pass1" />
+                <br /><br />
+                <input type="submit" id="login-submit" value="Login" />
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock content %}

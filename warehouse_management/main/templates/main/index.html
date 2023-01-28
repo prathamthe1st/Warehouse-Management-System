@@ -1,0 +1,16 @@
+{%extends 'main/base.html'%}
+{%load static%}
+{%block head_css_site%}
+<link rel='stylesheet' href="{%static 'css/index.css'%}"/>
+{%endblock head_css_site%}
+{%block content%}
+<section class="banner embed-responsive-item">
+    <video class='hidden-sm-down' autoplay loop muted>
+        <source src="{%static 'videos/warehouse.mp4'%}" type="video/mp4" id='home-video'>
+    </video>
+    <h2 class="warehouse-text">THE WAREHOUSE BEGINS</h2>
+    <div class="btns btns-two">
+        <h2 class='warehouse-button'>HOVER ME</h2>
+    </div>
+</section>
+{%endblock content%}
