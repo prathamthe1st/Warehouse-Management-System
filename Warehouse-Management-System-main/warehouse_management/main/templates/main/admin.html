@@ -16,39 +16,40 @@
 <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
     <div class="offcanvas-header">
         <h5 class="offcanvas-title" id="offcanvasExampleLabel">Admin DashBoard</h5>
-        <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close" id="close"></button>
+        <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"
+            id="close"></button>
     </div>
     <div class="offcanvas-body" id="side-menu">
-        <div class="dropdown mt-3"  id="side-button" >
-            <button class="btn btn-light text-white" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown">
-                <p id="side-p"><span id="side-span">Revenue</span></p>
-            </button>
+        <div class="dropdown mt-3" id="side-button">
+            <a class="btn btn-light text-white" href="/entry" type="button" id="dropdownMenuButton">
+                <p id="side-p"><span id="side-span">Create Entry</span></p>
+            </a>
         </div>
-        <div class="dropdown mt-3"  id="side-button" >
+        <div class="dropdown mt-3" id="side-button">
             <button class="btn btn-light text-white " type="button" id="dropdownMenuButton" data-bs-toggle="dropdown">
                 <p id="side-p"><span id="side-span">Insights</span></p>
             </button>
 
         </div>
-        <div class="dropdown mt-3" id="side-button" >
+        <div class="dropdown mt-3" id="side-button">
             <button class="btn btn-light text-white" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown">
                 <p id="side-p"><span id="side-span">Requests</span></p>
             </button>
 
         </div>
-        <div class="dropdown mt-3"  id="side-button" >
+        <div class="dropdown mt-3" id="side-button">
             <button class="btn btn-light text-white" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown">
                 <p id="side-p"><span id="side-span">Orders</span></p>
             </button>
 
         </div>
-        <div class="dropdown mt-3" id="side-button" >
+        <div class="dropdown mt-3" id="side-button">
             <button class="btn btn-light text-white" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown">
                 <p id="side-p"><span id="side-span">Reports</span></p>
             </button>
 
         </div>
-        <div class="dropdown mt-3" id="side-button" >
+        <div class="dropdown mt-3" id="side-button">
             <a href="/createuser" class="btn btn-light text-white" id="dropdownMenuButton">
                 <p id="side-p"><span id="side-span">Create user</span></p>
             </a>
@@ -86,7 +87,7 @@
     <option value="fiat">Fiat</option>
     <option value="audi">Audi</option>
 </form> -->
-</select>
+    </select>
     <div class="row">
         <div class="col">
             <canvas id="Current"></canvas>
@@ -171,90 +172,90 @@
     </div>
 </section>
 
-<script >
-const current = document.getElementById('Current');
-const outgoing = document.getElementById('Outgoing');
-const incoming = document.getElementById('Incoming');
-const predicted = document.getElementById('Predicted');
+<script>
+    const current = document.getElementById('Current');
+    const outgoing = document.getElementById('Outgoing');
+    const incoming = document.getElementById('Incoming');
+    const predicted = document.getElementById('Predicted');
 
 
-new Chart(current, {
-    type: 'bar',
-    data: {
-        labels: [{% for stock in stocks %}'{{ stock.s_name }}', {% endfor %}],
+    new Chart(current, {
+        type: 'bar',
+        data: {
+            labels: [{% for stock in stocks %}'{{ stock.s_name }}', {% endfor %}],
         datasets: [{
             label: 'Current Stock',
             data: [{% for quantity in quantities %} {{ quantity.quantity }}, {% endfor %}],
-            borderWidth: 1
-        },{
+        borderWidth: 1
+        }, {
             label: 'Current Stock',
             data: [{% for quantity in quantities %} {{ quantity.quantity }}, {% endfor %}],
-            borderWidth: 1
+        borderWidth: 1
         }]
     },
-    options: {
+        options: {
         scales: {
-        y: {
-            beginAtZero: true
+            y: {
+                beginAtZero: true
+            }
         }
-    }
     }
 });
 
-new Chart(incoming, {
-    type: 'bar',
-    data: {
-        labels: [{% for stock in stocks %}'{{ stock.s_name }},{{stock.date}}', {% endfor %}],
+    new Chart(incoming, {
+        type: 'bar',
+        data: {
+            labels: [{% for stock in stocks %}'{{ stock.s_name }},{{stock.date}}', {% endfor %}],
         datasets: [{
             label: 'Purchased',
             data: [{% for stock in stocks %} {{ stock.s_in }}, {% endfor %}],
-            borderWidth: 1
+        borderWidth: 1
         }]
     },
-    options: {
+        options: {
         scales: {
-        y: {
-            beginAtZero: true
+            y: {
+                beginAtZero: true
+            }
         }
-    }
     }
 });
 
-new Chart(outgoing, {
-    type: 'bar',
-    data: {
-        labels: [{% for stock in stocks %}'{{ stock.s_name }},{{stock.date}}', {% endfor %}],
+    new Chart(outgoing, {
+        type: 'bar',
+        data: {
+            labels: [{% for stock in stocks %}'{{ stock.s_name }},{{stock.date}}', {% endfor %}],
         datasets: [{
             label: 'Sold',
             data: [{% for stock in stocks %} {{ stock.s_out }}, {% endfor %}],
-            borderWidth: 1
+        borderWidth: 1
         }]
     },
-    options: {
+        options: {
         scales: {
-        y: {
-            beginAtZero: true
+            y: {
+                beginAtZero: true
+            }
         }
-    }
     }
 });
 
-new Chart(predicted, {
-    type: 'bar',
-    data: {
-        labels: [{% for stock in stocks %}'{{ stock.s_name }},{{stock.date}}', {% endfor %}],
+    new Chart(predicted, {
+        type: 'bar',
+        data: {
+            labels: [{% for stock in stocks %}'{{ stock.s_name }},{{stock.date}}', {% endfor %}],
         datasets: [{
             label: 'Suggested',
             data: [{% for stock in stocks %} {{ stock.quantity }}, {% endfor %}],
-            borderWidth: 1
+        borderWidth: 1
         }]
     },
-    options: {
+        options: {
         scales: {
-        y: {
-            beginAtZero: true
+            y: {
+                beginAtZero: true
+            }
         }
-    }
     }
 });
 </script>
