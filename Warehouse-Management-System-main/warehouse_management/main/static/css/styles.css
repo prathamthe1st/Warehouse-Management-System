@@ -1,0 +1,229 @@
+    /* All Navigation Link CSS  */
+    :root {
+        --bg: #dcdde1;     
+        --color-icon: #535c68;  
+        --social-icon1: #0413b8;
+        --social-icon2: #40f1f7;
+        --social-icon3: #e4405f;
+        --social-icon4: #cd201f; 
+}
+.icon-link {  
+    display: inline-flex;
+    font-size: 2rem;  
+    text-decoration: none;  
+    color: var(--color-icon);
+    width: 4rem;
+    height: 4rem;   
+    transition: .5s linear;
+    position: relative;
+    z-index: 1;
+    margin: auto
+}
+.icon-link::before {  
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 4rem;
+    height: 4rem;
+    border-radius: 50%;
+    z-index: -1;
+    transform: scale(0);
+    transition: 0.3s cubic-bezier(.95, .32, .37, 1.21);
+}
+.icon-link:hover::before {  
+    transform: scale(1);
+}
+.icon-link:hover {
+    color: #fff;
+}
+#icon-1{
+    padding-left: 15px;
+    padding-top: 6px;
+}
+#icon-2{
+    padding-left: 15px;
+    padding-top: 6px;
+}
+#icon-3{
+    padding-left: 15px;
+    padding-top: 6px;
+}
+#icon-4{
+    padding-left: 15px;
+    padding-top: 6px;
+}
+#icon-1:hover:before { 
+background: var(--social-icon1); 
+}
+
+#icon-2:hover:before { 
+background: var(--social-icon2);
+}
+
+#icon-3:hover:before { 
+background: var(--social-icon1); 
+}
+
+#icon-4:hover:before{ 
+background: var(--social-icon4); 
+
+}
+    body
+    {
+        background-image : radial-gradient(rgb(144, 195, 252),rgba(144, 195, 252,0));
+    }
+    .navigation-bar
+    {
+        background : radial-gradient(rgb(144, 195, 252),rgba(144, 195, 252,0));
+        border : none;
+    }
+    #logo
+    {
+        font-family : 'Sofia';
+        margin-left: 3%;
+    }
+    #navbar-link
+    {
+        font-family : 'Sofia';
+        margin:0 5px 0;
+        color: black;
+        transform-style: preserve-3d;
+        transform: translateZ(-25px);
+        transition: transform .25s;
+    }
+    #navbar-link:before{
+        color: #00ff00;
+        background: #0000ff;
+        transform: rotateY(0deg) translateZ(25px);
+    }
+    #navbar-link:after{
+        color: #00ff00;
+        transform: rotateX(90deg) translateZ(25px);
+    }
+    #navbar-link:hover{
+        background-color:
+        transform: translateZ(-25px) rotateX(-90deg);
+    }
+    #admin-logo {
+        margin-left: 1rem;
+    }
+    #all-links
+    {
+        padding-left : 100px;
+    }
+
+    .material-symbols-outlined 
+    {
+        font-variation-settings:
+        'FILL' 0,
+        'wght' 400,
+        'GRAD' 0,
+        'opsz' 48
+    }
+
+    #heading-text
+    {
+        font-size: 40px;
+    }
+
+    /* Footer CSS */
+
+    #social-media-image
+    {
+        width: 50%;
+        margin-left:50%;
+    }
+
+    .text-reset{
+        font-family : 'Sofia';
+    }
+    .text-uppercase
+    {
+        font-family : 'Sofia';
+        text-decoration:bold;
+    }
+    .text-reset{
+        font-family : 'Abril Fatface';
+        font-size: 20px;
+        box-shadow: inset 0 0 0 0 #54b3d6;
+        color: #54b3d6;
+        margin: 0 -.25rem;
+        padding: 0 .25rem;
+        transition: color .3s ease-in-out, box-shadow .3s ease-in-out;
+    }
+    #social-media-links
+    {
+        margin-left:39%;
+    }
+    .text-reset:hover
+    {
+        color: #fff;
+        box-shadow: inset 200px 0 0 0 #54b3d6;
+    }
+    #footer
+    {
+        background-image : linear-gradient(to left,rgb(144, 195, 252),rgba(144, 195, 252,0));
+        border : none;
+    }
+
+    #footer-pno
+    {
+        font-family: 'Droid';
+        font-size:20px;
+    }
+    #footer-address
+    {
+        font-family: 'Lora';
+        font-size: 23px;
+    }
+    #footer-email
+    {
+        font-family: 'Courier New';
+        font-size: 22px;
+    }
+
+    @media (max-width:700px)
+    {
+        #social-media-image
+        {
+            width: 10%;
+        }
+        .nav-item{  
+            width:50%;
+        }
+        #social-media-dropdown{
+            width:40%;
+        }
+    }
+    @include media-breakpoint-up(sm) 
+    {
+        #heading-text 
+        {
+            font-size: 60px;
+        }
+    }
+
+    @include media-breakpoint-up(md) {
+        #heading-text 
+        {
+            font-size: 80px;
+        }
+    }
+    @include media-breakpoint-up(lg) 
+    {
+        #heading-text 
+        {
+            font-size: 100px;
+        }
+    }
+    @keyframes slidebg {
+        to {
+            background-position:20vw;
+        }
+    }
+    #footer{
+        padding-top:50px;
+    }

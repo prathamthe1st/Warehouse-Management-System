@@ -1,0 +1,48 @@
+{%extends 'main/base.html'%}
+{%load static%}
+{%block head_css_site%}
+<link rel="stylesheet" href="{%static 'css/entry.css'%}">
+{%endblock head_css_site%}
+{%block content%}
+<!--Entry form-->
+
+<div class="entry">
+    <div class="box-entry">
+      <div class="form-entry">
+
+       <form class="entry-form">
+       <h2 style="color: aliceblue; margin-bottom: 10px;margin-top: 25px;">Update Entry</h2>
+       <label for="username" id="entry-label">Date of Entry:</label>
+         
+         <input type="date" id="entry-input" name="date" onblur="changeDateFormat()">
+         <br>
+         <div class="stock">
+         <div class="stock-in">   
+         <label for="quantity" id="entry-label">Stock-In:</label>
+         <input type="number" id="entry-input" name="password">
+        </div>
+        <div class="stock-out">
+         <label for="quantity" id="entry-label">Stock-Out:</label>
+         <input type="number" id="entry-input" name="password">
+        </div>
+        </div> 
+         <br>
+         <label for="item-name" id="entry-label">Item-Name:</label>
+         <select type="text" id="entry-select" name="username" >
+         <br>
+         <input type="submit" id="entry-submit" value="Submit">
+       </form>
+    
+        </div>
+      </div>
+   </div>
+   {% endblock content %}
+   <script>
+    function changeDateFormat() {
+      var date = document.getElementById("date").value;
+      var parts = date.split("-");
+      var newDate = parts[1] + "-" + parts[0] + "-" + parts[2];
+      document.getElementById("date").value = newDate;
+      console.log(date)
+    }
+  </script>

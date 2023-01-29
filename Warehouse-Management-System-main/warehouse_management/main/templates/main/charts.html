@@ -1,0 +1,38 @@
+{%extends 'main/base.html'%} 
+{%load static%} 
+{%block head_css_site%}
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+{%endblock head_css_site%}
+{%block content%}
+<div>
+    <canvas id="myChart"></canvas>
+  </div>
+  <script>
+    const ctx = document.getElementById('myChart');
+    {%for i in stocks%}
+    {%endfor%}
+    new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels: [{% for stock in stocks %}'{{ stock.s_name }},{{stock.date}}', {% endfor %}],
+        datasets: [{
+          label: 'Quantity',
+          data: [{% for stock in stocks %} {{ stock.quantity }}, {% endfor %}],
+          borderWidth: 1
+        },{
+          label: 'Quantity',
+          data: [{% for stock in stocks %} {{ stock.quantity }}, {% endfor %}],
+          borderWidth: 1
+        }]
+      },
+      options: {
+        scales: {
+          y: {
+            beginAtZero: true
+          }
+        }
+      }
+    });
+  </script>
+   
+{% endblock content %}
