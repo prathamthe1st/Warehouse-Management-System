@@ -4,14 +4,16 @@ from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django.contrib.auth.models import User
 from .models import stock, sq
-import matplotlib.pyplot as plt
-from matplotlib.backends.backend_agg import FigureCanvasAgg as FigureCanvas
-from matplotlib.figure import Figure
-from django.db.models import Sum, F
+from django.db.models import Sum
 
 
 def home(request):
     return render(request,'main/index.html')
+
+def entry(request):
+    return render(request,'main/entry.html')
+def report(request):
+    return render(request,'main/report.html')
 
 def createuser(request):
     return render(request,'main/createuser.html')
@@ -20,8 +22,13 @@ def admin(request):
     stocks = sq.objects.all()
     # sname=request.get['s_name']
     # print(stocks)
-    quantity=sq.objects.annotate(quantity=F('s_in')-F('s_out'))
-    return render(request,'main/admin.html',{'stocks': stocks} )
+    
+    quantities=sq.objects.values('s_name').annotate(quantity=Sum('s_in')-Sum('s_out'))
+    for quantity in quantities:
+        s_name = quantity['s_name']
+        tq = quantity['quantity']
+        print(s_name,tq )
+    return render(request,'main/admin.html',{'stocks': stocks, 'quantities':quantities} )
 
 def login(request):
     if request.method == 'POST':

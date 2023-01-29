@@ -3,8 +3,8 @@
 {%block head_css_site%}
 <link rel="stylesheet" href="{%static 'css/admin.css'%}">
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Counter-Up/1.0.0/jquery.counterup.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/waypoints/4.0.1/jquery.waypoints.js"></script>
 {%endblock head_css_site%}
 
 {%block ifsuperuser%}
@@ -16,111 +16,67 @@
 <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
     <div class="offcanvas-header">
         <h5 class="offcanvas-title" id="offcanvasExampleLabel">Admin DashBoard</h5>
-        <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close" id="close"></button>
     </div>
     <div class="offcanvas-body" id="side-menu">
-        <div class="dropdown mt-3">
-            <button class="btn btn-light " type="button" id="dropdownMenuButton" data-bs-toggle="dropdown">
-                Revenue
+        <div class="dropdown mt-3"  id="side-button" >
+            <button class="btn btn-light text-white" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown">
+                <p id="side-p"><span id="side-span">Revenue</span></p>
+            </button>
+        </div>
+        <div class="dropdown mt-3"  id="side-button" >
+            <button class="btn btn-light text-white " type="button" id="dropdownMenuButton" data-bs-toggle="dropdown">
+                <p id="side-p"><span id="side-span">Insights</span></p>
             </button>
 
         </div>
-        <div class="dropdown mt-3">
-            <button class="btn btn-light " type="button" id="dropdownMenuButton" data-bs-toggle="dropdown">
-                Insights
+        <div class="dropdown mt-3" id="side-button" >
+            <button class="btn btn-light text-white" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown">
+                <p id="side-p"><span id="side-span">Requests</span></p>
             </button>
 
         </div>
-        <div class="dropdown mt-3">
-            <button class="btn btn-light " type="button" id="dropdownMenuButton" data-bs-toggle="dropdown">
-                Requests
+        <div class="dropdown mt-3"  id="side-button" >
+            <button class="btn btn-light text-white" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown">
+                <p id="side-p"><span id="side-span">Orders</span></p>
             </button>
 
         </div>
-        <div class="dropdown mt-3">
-            <button class="btn btn-light " type="button" id="dropdownMenuButton" data-bs-toggle="dropdown">
-                Orders
+        <div class="dropdown mt-3" id="side-button" >
+            <button class="btn btn-light text-white" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown">
+                <p id="side-p"><span id="side-span">Reports</span></p>
             </button>
 
         </div>
-        <div class="dropdown mt-3">
-            <button class="btn btn-light " type="button" id="dropdownMenuButton" data-bs-toggle="dropdown">
-                Reports
-            </button>
-
-        </div>
-        <div class="dropdown mt-3">
-            <button class="btn btn-light " type="button" id="dropdownMenuButton" data-bs-toggle="dropdown">
-                Profile
-            </button>
+        <div class="dropdown mt-3" id="side-button" >
+            <a href="/createuser" class="btn btn-light text-white" id="dropdownMenuButton">
+                <p id="side-p"><span id="side-span">Create user</span></p>
+            </a>
         </div>
     </div>
 </div>
-<section class="cardbody">
-    <div class="row" id="cardbox">
+
+<section class="'piechart" style="margin: left 30px;margin-left: 30px;">
+    <div class="row">
         <div class="col">
-            <div class="card">
-                <div>
-                    <div class="numbers">
-                        2149
-                    </div>
-                    <div class="cardname">
-                        Revenue
-                    </div>
-                </div>
-                <div class="iconbox">
-                    <i class="bi bi-currency-dollar"></i>
-                </div>
-            </div>
+            <div class="pie animate" style="--p:90;--c:blue"> 90%</div>
+            <span></span>
         </div>
         <div class="col">
-            <div class="card">
-                <div>
-                    <div class="numbers">
-                        3295
-                    </div>
-                    <div class="cardname">
-                        Sales
-                    </div>
-                </div>
-                <div class="iconbox">
-                    <i class="bi bi-currency-dollar"></i>
-                </div>
-            </div>
+            <div class="pie animate" style="--p:60;--c:red"> 60%</div>
         </div>
         <div class="col">
-            <div class="card">
-                <div>
-                    <div class="numbers">
-                        67.5
-                    </div>
-                    <div class="cardname">
-                        Avg Sales
-                    </div>
-                </div>
-                <div class="iconbox">
-                    <i class="bi bi-currency-dollar"></i>
-                </div>
-            </div>
+            <div class="pie animate" style="--p:30;--c:yellow"> 30%</div>
         </div>
         <div class="col">
-            <div class="card">
-                <div>
-                    <div class="numbers">
-                        2149
-                    </div>
-                    <div class="cardname">
-                        Revenue
-                    </div>
-                </div>
-                <div class="iconbox">
-                    <i class="bi bi-currency-dollar"></i>
-                </div>
-            </div>
+            <div class="pie animate" style="--p:10;--c:orange">10%</div>
         </div>
-    </div>
+        <div class="col">
+            <div class="pie animate" style="--p:40;--c:lightgreen">40%</div>
+        </div>
     </div>
 </section>
+
 <section class="charts">
     <!-- <form>
     <label for="cars">Choose a car:</label>
@@ -149,6 +105,72 @@
     </div>
 </section>
 
+<section class="cardbody">
+    <div class="row" id="cardbox">
+        <div class="col">
+            <div class="card">
+                <div>
+                    <span class="count" data-val="3165">
+                        000
+                    </span>
+                    <div class="cardname">
+                        Total Purchase
+                    </div>
+                </div>
+                <div class="iconbox">
+                    <i class="bi bi-currency-dollar"></i>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="card">
+                <div>
+                    <span class="count" data-val="2411">
+                        000
+                    </span>
+                    <div class="cardname">
+                        Total Sales
+                    </div>
+                </div>
+                <div class="iconbox">
+                    <i class="bi bi-currency-dollar"></i>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="card">
+                <div>
+                    <div class="count" data-val="2312">
+                        000
+                    </div>
+                    <div class="cardname">
+                        Turnover
+                    </div>
+                </div>
+                <div class="iconbox">
+                    <i class="bi bi-currency-dollar"></i>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="card">
+                <div>
+                    <div class="count" data-val="1243">
+                        000
+                    </div>
+                    <div class="cardname">
+                        Warehouse Value
+                    </div>
+                </div>
+                <div class="iconbox">
+                    <i class="bi bi-currency-dollar"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+</section>
+
 <script >
 const current = document.getElementById('Current');
 const outgoing = document.getElementById('Outgoing');
@@ -159,10 +181,10 @@ const predicted = document.getElementById('Predicted');
 new Chart(current, {
     type: 'bar',
     data: {
-        labels: [{% for stock in stocks %}'{{ stock.s_name }},{{stock.date}}', {% endfor %}],
+        labels: [{% for stock in stocks %}'{{ stock.s_name }}', {% endfor %}],
         datasets: [{
-            label: 'Quantity',
-            data: [{% for stock in stocks %} {{ stock.quantity }}, {% endfor %}],
+            label: 'Current Stock',
+            data: [{% for quantity in quantities %} {{ quantity.quantity }}, {% endfor %}],
             borderWidth: 1
         }]
     },
@@ -180,7 +202,7 @@ new Chart(incoming, {
     data: {
         labels: [{% for stock in stocks %}'{{ stock.s_name }},{{stock.date}}', {% endfor %}],
         datasets: [{
-            label: 'Quantity',
+            label: 'Purchased',
             data: [{% for stock in stocks %} {{ stock.s_in }}, {% endfor %}],
             borderWidth: 1
         }]
@@ -199,7 +221,7 @@ new Chart(outgoing, {
     data: {
         labels: [{% for stock in stocks %}'{{ stock.s_name }},{{stock.date}}', {% endfor %}],
         datasets: [{
-            label: 'Quantity',
+            label: 'Sold',
             data: [{% for stock in stocks %} {{ stock.s_out }}, {% endfor %}],
             borderWidth: 1
         }]
@@ -218,7 +240,7 @@ new Chart(predicted, {
     data: {
         labels: [{% for stock in stocks %}'{{ stock.s_name }},{{stock.date}}', {% endfor %}],
         datasets: [{
-            label: 'Quantity',
+            label: 'Suggested',
             data: [{% for stock in stocks %} {{ stock.quantity }}, {% endfor %}],
             borderWidth: 1
         }]
@@ -236,3 +258,6 @@ new Chart(predicted, {
 
 
 {%endblock content%}
+{%block extrascripts%}
+<script src="{%static 'js/app.js'%}"></script>
+{%endblock extrascripts%}

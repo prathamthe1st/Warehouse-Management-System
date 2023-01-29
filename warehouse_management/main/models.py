@@ -1,7 +1,7 @@
 from django.db import models
 
 class stock(models.Model):
-    s_id=models.AutoField(primary_key=True)
+    s_id=models.AutoField(primary_key=True, default=0)
     s_name=models.CharField(max_length=50)
     s_cost_per_unit=models.IntegerField()
     def __str__(self):

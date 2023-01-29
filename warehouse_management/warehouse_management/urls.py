@@ -27,4 +27,6 @@ urlpatterns = [
     path('db/',app_views.dbtest,name='db'),
     path('createuser/',app_views.createuser,name='createuser'),
     path('admins/',app_views.admin,name='admindb'),
+    path('entry/',app_views.entry,name='entry'),
+    path('report/',app_views.report,name='report'),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
